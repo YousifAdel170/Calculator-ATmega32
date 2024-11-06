@@ -1,0 +1,33 @@
+22:09:20 **** Incremental Build of configuration Debug for project calculator ****
+make all 
+Building file: ../application.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"application.d" -MT"application.o" -c -o "application.o" "../application.c"
+In file included from ../application.c:8:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../application.c
+ 
+Building target: calculator.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,calculator.map -mmcu=atmega32 -o "calculator.elf"  ./application.o ./gpio.o ./kepad.o ./lcd.o   
+Finished building target: calculator.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S calculator.elf  >"calculator.lss"
+Finished building: calculator.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 calculator.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    9742 bytes (29.7% Full)
+(.text + .data + .bootloader)
+
+Data:         88 bytes (4.3% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 

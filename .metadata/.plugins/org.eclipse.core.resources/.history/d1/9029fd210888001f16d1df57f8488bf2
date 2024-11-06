@@ -1,0 +1,58 @@
+/******************************************************************************
+ * File Name: application.c
+ * Description: Simple Calculator [+, -, *, /]
+ * Author: Yousif Adel
+ *******************************************************************************/
+#include	"lcd.h"
+#include	"keypad.h"
+#include	<util/delay.h>
+
+#define ZERO			0
+
+float32 result = 0;
+void calculator(uint8 num1, uint8 num2, uint8 operator)
+{
+	/* move to next line to display the result */
+	LCD_moveCursor(1,0);
+
+	switch(operator)
+	{
+	case '+':
+		result  = num1 + num2;
+		break;
+	case '-':
+		result  = num1 - num2;
+		break;
+	case '*':
+		result  = num1 * num2;
+		break;
+	case '/':
+		if(num2 != 0)
+			result  = num1 / num2;
+		else
+			LCD_displayString("Error!!!");
+		break;
+	default:
+		LCD_displayString("Wrong Operator!!!");
+		break;
+	}
+}
+
+
+int main(void)
+{
+	/* Initialize The LCD driver */
+	LCD_init();
+
+	/* Initialize the variables to zero */
+	uint8 num1 = ZERO, num2 = ZERO, operator = ZERO, key;
+
+	while(1)
+	{
+		/* gets the input from the keypad */
+		key = KEYPAD_getPressedKey();
+
+		_delay_ms(500);
+
+	}
+}

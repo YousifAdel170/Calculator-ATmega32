@@ -1,0 +1,53 @@
+/******************************************************************************
+ * File Name: application.c
+ * Description: Simple Calculator [+, -, *, /]
+ * Author: Yousif Adel
+ *******************************************************************************/
+#include	"lcd.h"
+#include	"keypad.h"
+
+#define ZERO			0
+
+float32 result = 0;
+void calculator(uint8 num1, uint8 num2, uint8 operator)
+{
+	switch(operator)
+	{
+	case '+':
+		LCD_moveCursor(1,0);
+		result  = num1 + num2;
+		break;
+	case '-':
+		LCD_moveCursor(1,0);
+		result  = num1 - num2;
+		break;
+	case '*':
+		LCD_moveCursor(1,0);
+		result  = num1 * num2;
+		break;
+	case '/':
+		if(num2 != 0)
+		{
+			LCD_moveCursor(1,0);
+			result  = num1 + num2;
+			break;
+		}
+		else
+		{
+			LCD_moveCursor(1,0);
+			LCD_displayString("Error: Divide by 0 !!");
+		}
+
+	}
+}
+
+
+int main(void)
+{
+	LCD_init();
+
+	uint8 num1 = ZERO, num2 = ZERO, operator;
+	while(1)
+	{
+	}
+}
